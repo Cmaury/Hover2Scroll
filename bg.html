@@ -1,9 +1,10 @@
 <html>
-<header>
+<head>
 	
 	<script  type="text/javascript">
-	var mouseY = 0;
-	var mouseX = 0;
+	
+//Set mouse position coordinates to mouseX, mouseY variables
+	var mouseY, mouseX;
 	window.addEventListener('mousemove',
 	function(){
 	mouseX = event.clientX;
@@ -14,49 +15,54 @@
 	mouseY = event.clientY;
 	},false);
 	
+	
+//Set window dimentions to variables height and width	
 	var height = window.innerHeight;
 	var width = window.innerWidth;
-	
-	function upvertpageScroll() {
+
+//Set directional scroll functions to be called when appropriate
+	function upScroll() {
 	    window.scrollBy(0,-25); // horizontal and vertical scroll increments
-	    window.scrolldelay = setTimeout('upvertpageScroll()',50); // scrolls every 100 milliseconds
+	    window.scrolldelay = setTimeout('upScroll()',50); // scrolls every 100 milliseconds
 	}
-	function vertpageScroll() {
+	function downpageScroll() {
 	    window.scrollBy(0,25); // horizontal and vertical scroll increments
-	    window.scrolldelay = setTimeout('vertpageScroll()',50); // scrolls every 100 milliseconds
+	    window.scrolldelay = setTimeout('downScroll()',50); // scrolls every 100 milliseconds
 	}
 
-	function horizpageScroll() {
+	function leftScroll() {
 	    window.scrollBy(25,0); 
-	    window.scrolldelay = setTimeout('horizpageScroll()',50);
+	    window.scrolldelay = setTimeout('leftScroll()',50);
 	}
 	
-	function uphorizpageScroll() {
+	function rightScroll() {
 	    window.scrollBy(-25,0); 
-	    window.scrolldelay = setTimeout('lefthorizpageScroll()',50);
+	    window.scrolldelay = setTimeout('rightScroll()',50);
 	}
 	
 	function stopScroll() {
 	    clearTimeout(window.scrolldelay);
 	}
 
+//Conditions when directional scroll function should be called
 	if (mouseY >= height * .95) {
-	upvertpageScroll();
-	console.log('vertpage scroll bottom completed');
+	downScroll();
+	console.log('downScroll completed');
 	}
 
 	else if (mouseY <= height * .05) {
-	vertpageScroll();
-	console.log('vertpage scroll top completed');
+	upScroll();
+	console.log('upScroll completed');
 	}
 	
 	else if (mouseX <= width*.05) {
-	lefthorizpageScroll();
-	console.log('horizontal page scroll completed');
+	leftScroll();
+	console.log('leftScroll completed');
 	}
+	
 	else if (mouseX >= width * .95) {
-	horizpageScroll();
-	console.log('horiz scroll option 2 completed');
+	rightScroll();
+	console.log('rightScroll completed');
 	}
 
 	else {
@@ -69,7 +75,7 @@
 	console.log('width ', width);
 	</script>
 
-</header>
+</head>
 <body style="height:2000px;">
 	</body>
 </html>
