@@ -1,0 +1,75 @@
+<html>
+<header>
+	
+	<script  type="text/javascript">
+	var mouseY = 0;
+	var mouseX = 0;
+	window.addEventListener('mousemove',
+	function(){
+	mouseX = event.clientX;
+	},false);
+	
+	window.addEventListener('mousemove',
+	function(){	
+	mouseY = event.clientY;
+	},false);
+	
+	var height = window.innerHeight;
+	var width = window.innerWidth;
+	
+	function upvertpageScroll() {
+	    window.scrollBy(0,-25); // horizontal and vertical scroll increments
+	    window.scrolldelay = setTimeout('upvertpageScroll()',50); // scrolls every 100 milliseconds
+	}
+	function vertpageScroll() {
+	    window.scrollBy(0,25); // horizontal and vertical scroll increments
+	    window.scrolldelay = setTimeout('vertpageScroll()',50); // scrolls every 100 milliseconds
+	}
+
+	function horizpageScroll() {
+	    window.scrollBy(25,0); 
+	    window.scrolldelay = setTimeout('horizpageScroll()',50);
+	}
+	
+	function uphorizpageScroll() {
+	    window.scrollBy(-25,0); 
+	    window.scrolldelay = setTimeout('lefthorizpageScroll()',50);
+	}
+	
+	function stopScroll() {
+	    clearTimeout(window.scrolldelay);
+	}
+
+	if (mouseY >= height * .95) {
+	upvertpageScroll();
+	console.log('vertpage scroll bottom completed');
+	}
+
+	else if (mouseY <= height * .05) {
+	vertpageScroll();
+	console.log('vertpage scroll top completed');
+	}
+	
+	else if (mouseX <= width*.05) {
+	lefthorizpageScroll();
+	console.log('horizontal page scroll completed');
+	}
+	else if (mouseX >= width * .95) {
+	horizpageScroll();
+	console.log('horiz scroll option 2 completed');
+	}
+
+	else {
+	stopScroll();
+	console.log('scrolling stopped');
+	}
+	console.log('ycoordinate ', window.mouseY);
+	console.log('xcoordinate ', window.mouseX);
+	console.log('height ', height);
+	console.log('width ', width);
+	</script>
+
+</header>
+<body style="height:2000px;">
+	</body>
+</html>
