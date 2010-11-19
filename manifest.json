@@ -1,0 +1,9 @@
+{
+  "name": "Hover2Scroll",
+  "version": "0.0.1",
+  "description": "Scroll by hovering over the margins",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": "hoverscroll.js"
+}
